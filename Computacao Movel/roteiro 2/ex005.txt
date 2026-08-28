@@ -1,0 +1,88 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MaterialApp(
+    home: PerfilPage(),
+  ));
+}
+
+class PerfilPage extends StatelessWidget {
+  const PerfilPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Perfil'),
+      ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final bool telaLarga = constraints.maxWidth >= 600;
+
+          return Padding(
+            padding: const EdgeInsets.all(20),
+            child: telaLarga
+                ? Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: _fotoPerfil(),
+                      ),
+                      const SizedBox(width: 30),
+                      Expanded(
+                        flex: 2,
+                        child: _informacoes(),
+                      ),
+                    ],
+                  )
+                : Column(
+                    children: [
+                      _fotoPerfil(),
+                      const SizedBox(height: 20),
+                      _informacoes(),
+                    ],
+                  ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _fotoPerfil() {
+    return const CircleAvatar(
+      radius: 70,
+      backgroundImage: NetworkImage(
+        'https://i.pravatar.cc/300',
+      ),
+    );
+  }
+
+  Widget _informacoes() {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Pedro Neto',
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: 10),
+        Text(
+          'Estudante de Sistemas de Informação',
+          style: TextStyle(fontSize: 18),
+        ),
+        SizedBox(height: 20),
+        Text(
+          'Meu nome e Pedro e to estudando '
+          'programacao.',
+          style: TextStyle(fontSize: 16),
+        ),
+        SizedBox(height: 20),
+        Text('Email: pedro@email.com'),
+        Text('Cidade: Uberlândia'),
+      ],
+    );
+  }
+}
