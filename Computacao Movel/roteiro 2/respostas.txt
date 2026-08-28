@@ -1,0 +1,10 @@
+1- row é linha e column é coluna
+2- o eixo principal da column é o vertical
+3- mainAxisAlignment
+4- padding é espaço interno, sized box é pra definir espaço e dimensao entre elementos
+5- para controlar o espaç disponivel que os childs usam
+6- pq pode nao ser adaptar com a tela afetando a responsividade
+7- constraints descem da a ideia que o pai informa ao child os limites de espaço
+8- column
+9-row
+10- se realmente cabe o conteudo no espaço disponivel e se tem espaços mal distribuídos
