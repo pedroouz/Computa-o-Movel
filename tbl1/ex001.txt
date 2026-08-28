@@ -1,0 +1,78 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: TelaInicial()
+    );
+  }
+}
+
+class TelaInicial extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: Text("Exercício 1"),
+      ),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text("Você está na pagina inicial"),
+            ElevatedButton(
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TelaDetalhes(),
+                  )
+                );
+              },
+              child: Text("Ir para detalhes")
+            )
+          ]
+        ),
+      )
+    );
+  }
+}
+
+class TelaDetalhes extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: Text("Detalhes")
+        ),
+        body: Center(
+          child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Você está na tela detalhes"),
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.pop(context);
+                },
+                child: Text("Voltar")
+              )
+            ],
+          )
+        )
+      );
+  }
+
+}
+
