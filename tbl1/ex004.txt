@@ -1,0 +1,122 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Tela1()
+    );
+  }
+}
+
+class Tela1 extends StatefulWidget{
+  const Tela1({super.key});
+  @override
+  State<Tela1> createState() => _Tela1State();
+}
+
+class _Tela1State extends State<Tela1>{
+  int valorAtual = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Tela 1'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Valor atual: $valorAtual',
+              style: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () async {
+                final resultado = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Tela2(),
+                  ),
+                );
+
+                if (resultado != null) {
+                  setState(() {
+                    valorAtual = resultado;
+                  });
+                }
+              },
+              child: const Text('Escolher Número'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+}
+
+class Tela2 extends StatefulWidget {
+  const Tela2({super.key});
+
+  @override
+  State<Tela2> createState() => _Tela2State();
+}
+
+class _Tela2State extends State<Tela2> {
+  final TextEditingController controlador = TextEditingController();
+
+  @override
+  void dispose() {
+    controlador.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Tela 2'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: controlador,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Digite um número',
+                border: OutlineInputBorder(),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+                final numero = int.tryParse(controlador.text);
+
+                if (numero != null) {
+                  Navigator.pop(context, numero);
+                }
+              },
+              child: const Text('Enviar Número'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+

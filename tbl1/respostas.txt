@@ -1,0 +1,8 @@
+2- a. usamos o construtor para a tela 2 receber a variavel assim q ela for criada sem precisar usar variavel global
+b. nao precisa de stateful pq a tela 2 nao passa por nenhuma mudança, ela so atribui a variavel nome.
+c. nao
+
+3- a. pq senao a variavel seria um Future e nao poderia ser tratada na tela 1
+b. o await so pode ser usado se tiver um async na funcao. se nao tiver o await nao roda
+c. Future é uma variavel que ainda vai ter resultado, no caso a tela 1 espera um valor Future que ainda vai ser atribuido na tela 2
+d.Na tela 2 ao clicar no button desejado
