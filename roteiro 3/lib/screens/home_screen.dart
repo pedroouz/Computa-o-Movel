@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'product_screen.dart';
-import 'profile_screen.dart';
+import 'task_list_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,36 +8,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Lista de Tarefas'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ProductScreen(),
-                  ),
-                );
-              },
-              child: const Text('Ir para Produtos'),
-            ),
-
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ProfileScreen(),
-                  ),
-                );
-              },
-              child: const Text('Ir para Perfil'),
-            ),
-          ],
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const TaskListScreen(),
+              ),
+            );
+          },
+          child: const Text('Ver tarefas'),
         ),
       ),
     );
