@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+
+class Exercicio1 extends StatefulWidget {
+  const Exercicio1({super.key});
+
+  @override
+  State<Exercicio1> createState() => _Exercicio1State();
+}
+
+class _Exercicio1State extends State<Exercicio1> {
+  double altura = 100;
+  Color cor = Colors.blue;
+
+  void animar() {
+    setState(() {
+      if (altura == 100) {
+        altura = 250;
+        cor = Colors.red;
+      } else {
+        altura = 100;
+        cor = Colors.blue;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Exercício 1"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AnimatedContainer(
+              duration: const Duration(seconds: 1),
+              width: 150,
+              height: altura,
+              color: cor,
+            ),
+
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: animar,
+              child: const Text("Animar"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
