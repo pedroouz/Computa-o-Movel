@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+
+class Exercicio4 extends StatefulWidget {
+  const Exercicio4({super.key});
+
+  @override
+  State<Exercicio4> createState() => _Exercicio4State();
+}
+
+class _Exercicio4State extends State<Exercicio4> {
+  double largura = 150;
+  double altura = 100;
+
+  void expandir() {
+    setState(() {
+      if (largura == 150) {
+        largura = 300;
+        altura = 250;
+      } else {
+        largura = 150;
+        altura = 100;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Exercício 4"),
+      ),
+      body: Center(
+        child: GestureDetector(
+          onTap: expandir,
+          child: AnimatedContainer(
+            duration: const Duration(seconds: 1),
+            width: largura,
+            height: altura,
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: const Center(
+              child: Text(
+                "Clique no card",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
